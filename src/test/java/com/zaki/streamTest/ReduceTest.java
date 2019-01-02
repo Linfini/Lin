@@ -2,7 +2,10 @@ package com.zaki.streamTest;
 
 import org.junit.Test;
 
+import java.sql.SQLOutput;
 import java.util.*;
+import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ReduceTest {
@@ -62,6 +65,9 @@ public class ReduceTest {
         System.out.println(reduce.toString());
     }
 
+    /**
+     * 3个参数reduce
+     */
     @Test
     public void test4() {
         List<Person> persons = new ArrayList<>();
@@ -72,10 +78,13 @@ public class ReduceTest {
         persons.add(new Person("李四", 1, 50));
 
         Map<String, SumWeight> nameAndWeightMap = new HashMap<>();
-        Map<String, SumWeight> reduce=persons.stream().reduce(nameAndWeightMap, ReduceTest::apply, (result, temp)->{
+        Map<String, SumWeight> reduce = persons.stream().reduce(nameAndWeightMap, ReduceTest::apply, (result, temp) -> {
             result.putAll(temp);
             return result;
         });
+
+        List<String> collect = persons.stream().map(Person::getName).collect(Collectors.toList());
+        System.out.println(collect);
         System.out.println(reduce.toString());
     }
 
@@ -83,7 +92,7 @@ public class ReduceTest {
         if (res.containsKey(person.getName())) {
             SumWeight sum = res.get(person.getName());
             sum.setTotalWeight(Optional.ofNullable(sum.getTotalWeight()).orElse(0) + person.getWeight());
-        }else {
+        } else {
             SumWeight sumWeight = new SumWeight();
             sumWeight.setTotalWeight(person.getWeight());
             sumWeight.setName(person.getName());
@@ -91,4 +100,36 @@ public class ReduceTest {
         }
         return res;
     }
+
+    /**
+     * reduce源码分析1
+     */
+    @Test
+    public void test5() {
+
+        List<Integer> paramList = Arrays.asList(1, 2, 3, 4, 5);
+        System.out.println(paramList.stream().reduce(0, (param1, param2) -> param1 + param2));
+        //todo
+         //res的含义,计算结果不断的参与到一个运算中
+        BinaryOperator<Integer> binaryOperator = (a, b) -> a + b;
+        Integer res = 0;
+        for (Integer e : paramList) {
+            res = binaryOperator.apply(res, e);
+        }
+        System.out.println(res);
+
+        //匿名实现
+        BinaryOperator<Integer> binaryOperator1 =new BinaryOperator<Integer>() {
+            @Override
+            public Integer apply(Integer integer, Integer integer2) {
+                return integer+integer2;
+            }
+        };
+        Integer res1 = 0;
+        for (Integer e : paramList) {
+            res1 = binaryOperator1.apply(res1, e);
+        }
+        System.out.println(res1);
+    }
+
 }

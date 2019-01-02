@@ -1,30 +1,35 @@
-package com.zaki.ThreadTest;
+package com.zaki.threadTest;
 
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class VolatileCountTest {
-     private static int count = 1;
-     private volatile static int volatileCount = 1;
-     private static int synchronizedCount = 1;
-     private static AtomicInteger atomicCount = new AtomicInteger(1);
+     private static int count = 0;
+     private volatile static int volatileCount = 0;
+     private static int synchronizedCount = 0;
+     private static AtomicInteger atomicCount = new AtomicInteger(0);
 
     @Test
     public void test1() throws InterruptedException {
 
         final Object lock = new Object();
-        for (int i = 0; i < 500; i++) {
-            new Thread(() -> {
+        for (int i = 0; i < 50000; i++) {
+/*            new Thread(() -> {
                 count++;
                 volatileCount++;
                 synchronized (lock) {
                     synchronizedCount++;
                 }
                 atomicCount.incrementAndGet();
-            }).start();
-
-            Thread.sleep(2000);
+            }).start();*/
+            count++;
+            volatileCount++;
+            synchronized (lock) {
+                synchronizedCount++;
+            }
+            atomicCount.incrementAndGet();
+            Thread.sleep(1);
         }
 
 
