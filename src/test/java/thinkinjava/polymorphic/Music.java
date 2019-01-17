@@ -6,6 +6,8 @@ public class Music {
     }
     public static void main(String[] args){
         Wind flute=new Wind();
+        Stringed stringed=new Stringed();
         tune(flute);
+        tune(stringed);
     }
 }
