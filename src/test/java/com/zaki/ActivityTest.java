@@ -8,7 +8,7 @@ import org.activiti.engine.task.Task;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(Application.class)
+@SpringBootTest(classes = Application.class)
 public class ActivityTest {
 
     @Autowired
@@ -29,34 +29,35 @@ public class ActivityTest {
     RepositoryService repositoryService;
 
     @Test
-    public void query(){
+    public void query() {
         BpmnModel bpmnModel = repositoryService.getBpmnModel("oneTaskProcess:1:3");
-        System.out.println(bpmnModel.toString()+"23333");
+        System.out.println(bpmnModel.toString() + "23333");
     }
+
     @Test
-    public void startProcess(){
+    public void startProcess() {
         runtimeService.startProcessInstanceByKey("financialReport");
     }
 
     @Test
-    public void getTasks(){
+    public void getTasks() {
         List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("management").list();
-        for(Task task:tasks){
-            taskService.claim(task.getId(),"zaki");
+        for (Task task : tasks) {
+            taskService.claim(task.getId(), "zaki");
         }
-        System.out.println("list:"+tasks);
+        System.out.println("list:" + tasks);
         System.out.println(taskService.createTaskQuery().taskAssignee("zaki").list().toString());
     }
 
     @Test
-    public void complete(){
+    public void complete() {
         List<Task> tasks = taskService.createTaskQuery().taskAssignee("zaki").list();
-        tasks.forEach(e->{
+        tasks.forEach(e -> {
             System.out.println(e.getProcessInstanceId());
-            Map<String,Object> variable = new HashMap<>();
-            variable.put("comment","申请流程太慢了");
-            variable.put("grade","2");
-            taskService.complete(e.getId(),variable);
+            Map<String, Object> variable = new HashMap<>();
+            variable.put("comment", "申请流程太慢了");
+            variable.put("grade", "2");
+            taskService.complete(e.getId(), variable);
         });
     }
 }
