@@ -21,25 +21,48 @@ import java.util.Map;
  */
 @Configuration
 public class DataSourceConfig {
-    private Class<? extends DataSource> datasourceType = org.apache.tomcat.jdbc.pool.DataSource.class;
+    private Class<? extends DataSource> dataSourceType = org.apache.tomcat.jdbc.pool.DataSource.class;
 
     @Bean(name = "springDataSource")
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource writeDataSource() {
-        return DataSourceBuilder.create().type(datasourceType).build();
+        return DataSourceBuilder.create().type(dataSourceType).build();
     }
 
+    @Bean(name = "secondDataSource")
+    @ConfigurationProperties(prefix = "second.datasource")
+    public DataSource readDataSource() {
+        return DataSourceBuilder.create().type(dataSourceType).build();
+    }
+
+    @Primary
+    @Bean(name="dynamicDataSource")
+    @DependsOn({"springDataSource","secondDataSource"})
+    public AbstractRoutingDataSource dynamicDataSource(@Qualifier("springDataSource") DataSource springDataSource,
+                                                       @Qualifier("secondDataSource") DataSource secondDataSource) {
+        MultiDataSource dataSourceRouter = new MultiDataSource();
+        Map<Object, Object> targetDataSources = new HashMap<>();
+        targetDataSources.put("springDataSource", springDataSource);
+        targetDataSources.put("secondDataSource", secondDataSource);
+        dataSourceRouter.setDefaultTargetDataSource(springDataSource);
+        dataSourceRouter.setTargetDataSources(targetDataSources);
+
+        DataSourceContextHolder.addDataSourceIds("springDataSource");
+        DataSourceContextHolder.addDataSourceIds("secondDataSource");
+        return dataSourceRouter;
+    }
 
     @Bean
-    public SqlSessionFactory sqlSessionFactoryBean(@Qualifier("springDataSource") DataSource dataSource) throws Throwable {
-        SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
+    public SqlSessionFactory sqlSessionFactory(AbstractRoutingDataSource dynamicDataSource) throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sessionFactoryBean.setDataSource(dataSource);
-        sessionFactoryBean.setMapperLocations(resolver
-                .getResources("classpath:/mapper/**/*.xml"));
-        SqlSessionFactory sqlSessionFactory = sessionFactoryBean.getObject();
+
+        sqlSessionFactoryBean.setDataSource(dynamicDataSource);
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml"));
+
+        SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
         sqlSessionFactory.getConfiguration().setMapUnderscoreToCamelCase(true);
-        sqlSessionFactory.getConfiguration().getTypeAliasRegistry().registerAliases("com.seasun.classroom.model");
-        return sessionFactoryBean.getObject();
+        sqlSessionFactory.getConfiguration().getTypeAliasRegistry().registerAliases("com.zaki.model");
+        return sqlSessionFactoryBean.getObject();
     }
 }
