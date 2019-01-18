@@ -22,6 +22,7 @@ public class UserExpandImpl implements UserExpandService {
     private UserMapper userMapper;
 
     @Override
+    @Transactional
     public int createUserExpand(UserExpand user) {
 
         userExpandMapper.insertSelective(user);
