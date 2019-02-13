@@ -1,9 +1,9 @@
 package com.zaki.reflectTest;
 
 public class Student extends Person{
-    @ExcelColumn(value = "分数",sort = 2)
+    @ExcelColumn(value = "分数",sort = 3)
     private Integer grade;
-    @ExcelColumn(value = "学校",sort = 3)
+    @ExcelColumn(value = "学校",sort = 2)
     private String school;
 
 

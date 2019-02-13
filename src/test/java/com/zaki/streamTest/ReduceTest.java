@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.sql.SQLOutput;
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
