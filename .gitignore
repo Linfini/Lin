@@ -1,4 +1,3 @@
-.gradle/
 .idea/
 .log/
 build/
@@ -28,7 +27,7 @@ run_backup/
 .factorypath
 ~$*
 uploadTestTemp/
-
+.gradle/
 
 devlog/
 .DS_Store

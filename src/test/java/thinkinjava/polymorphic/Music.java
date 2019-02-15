@@ -1,13 +1,13 @@
 package thinkinjava.polymorphic;
 
 public class Music {
-    public static void tune(Instrument i){
+    //tune调整
+    public static void tune(Instrument i) {
         i.play(Note.middleC);
     }
-    public static void main(String[] args){
-        Wind flute=new Wind();
-        Stringed stringed=new Stringed();
-        tune(flute);
-        tune(stringed);
+
+    public static void main(String[] args) {
+        Wind flute = new Wind();
+        tune(flute);//这里发生的向上转型
     }
 }

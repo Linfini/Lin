@@ -7,7 +7,8 @@ public class Note {
         value = val;
     }
 
-    public static final Note middleC = new Note(0),
+    public static final Note
+            middleC = new Note(0),
             cSharp = new Note(1),
             cFlat = new Note(2);
 
