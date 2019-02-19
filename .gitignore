@@ -9,6 +9,7 @@ classes/*
 *.ipr
 *.ids
 *.iws
+*.lck
 publish
 .classpath
 .project
