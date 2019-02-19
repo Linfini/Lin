@@ -33,7 +33,7 @@ uploadTestTemp/
 devlog/
 .DS_Store
 .ideaDataSources
-
+application.properties
 dataSources/
 
 
