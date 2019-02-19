@@ -1,5 +1,5 @@
+.gradle/
 .idea/
-.idea/workspace.xml
 .log/
 build/
 target/
@@ -9,7 +9,6 @@ classes/*
 *.ipr
 *.ids
 *.iws
-*.lck
 publish
 .classpath
 .project
@@ -29,12 +28,12 @@ run_backup/
 .factorypath
 ~$*
 uploadTestTemp/
-.gradle/
+
 
 devlog/
 .DS_Store
 .ideaDataSources
-application.properties
+
 dataSources/
 
 
