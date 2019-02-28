@@ -1,9 +1,16 @@
 package com.zaki.streamTest;
 
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.mockito.*;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
+
+import static org.mockito.Mockito.mock;
 
 public class GroupByTest {
     private ArrayList<Person> persons = new ArrayList<Person>() {{
@@ -13,6 +20,7 @@ public class GroupByTest {
         add(new Person("张三", 5, 53));
         add(new Person("李四", 1, 49));
     }};
+
 
     /**
      * 分组求和
@@ -49,4 +57,10 @@ public class GroupByTest {
                 })));
         System.out.println(groupMap);
     }
+
+    @Mock
+    Student student;
+    @Rule
+    public MockitoRule mockitoRule = MockitoJUnit.rule();
+
 }

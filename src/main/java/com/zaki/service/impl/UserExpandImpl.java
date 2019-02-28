@@ -33,4 +33,11 @@ public class UserExpandImpl implements UserExpandService {
         userMapper.insertSelective(userIt);
         return 0;
     }
+
+    @Override
+    @Transactional
+    public void add(int i) {
+        ++i;
+    }
+
 }

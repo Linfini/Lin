@@ -7,4 +7,6 @@ import com.zaki.model.UserExpand;
  */
 public interface UserExpandService {
     int createUserExpand(UserExpand user);
+
+    void add(int i);
 }
