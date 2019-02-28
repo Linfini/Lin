@@ -27,7 +27,7 @@ public class OutInClass {
 
         @Autowired
         public InClass() {
-            System.out.println("InClass construct metho  d...");
+            System.out.println("InClass construct method...");
         }
     }
 
