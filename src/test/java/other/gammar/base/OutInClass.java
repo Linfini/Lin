@@ -22,7 +22,7 @@ public class OutInClass {
             System.out.println("InClass static code...");
         }
         {
-            System.out.println("InClass construct code...");
+            System.out.println("InClass constr   uct code...");
         }
 
         @Autowired
