@@ -1,4 +1,4 @@
-package other.designpatterntest.decoratortest;
+package other.designpattern.decoratortest;
 
 public class PaymentCommand implements Command {
     @Override

@@ -1,4 +1,4 @@
-package other.designpatterntest.decoratortest;
+package other.designpattern.proxytest;
 
 public interface Command {
     void execute();

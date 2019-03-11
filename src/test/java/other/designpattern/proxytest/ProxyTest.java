@@ -1,4 +1,4 @@
-package other.designpatterntest.proxytest;
+package other.designpattern.proxytest;
 
 import org.junit.Test;
 

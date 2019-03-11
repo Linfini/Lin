@@ -1,4 +1,4 @@
-package other.designpatterntest.decoratortest;
+package other.designpattern.decoratortest;
 
 /**
  * 性能统计装饰器

@@ -1,4 +1,4 @@
-package other.designpatterntest.proxytest;
+package other.designpattern.proxytest;
 
 public class Singer implements Command {
     private String name;
