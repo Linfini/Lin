@@ -18,6 +18,10 @@ public abstract class Handler {
         return response;
     }
 
+    public void setNextHandler(Handler nextHandler) {
+        this.nextHandler = nextHandler;
+    }
+
     protected abstract Level getHandlerLevel();
 
     public abstract Response response(Request request);
