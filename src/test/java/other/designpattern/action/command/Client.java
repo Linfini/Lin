@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * 命令模式
  * 没有太理解了,大概是用不同的receiver构建不同的命令,再使用调用者去调用
- * 为啥要做要走 因为你的doSomething()方法不知道mei
+ * 为啥要做要做 因为你的doSomething()方法不知道mei
  * */
 public class Client {
 
