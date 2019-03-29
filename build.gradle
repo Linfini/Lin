@@ -22,6 +22,8 @@ dependencies {
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
     // https://mvnrepository.com/artifact/org.apache.poi/poi
     compile group: 'org.apache.poi', name: 'poi', version: '3.17'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version:'3.17'
+    compile group: 'org.apache.poi', name: 'poi-excelant', version:'3.17'
 
     //数据库
     compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
