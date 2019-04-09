@@ -1,41 +1,45 @@
-.gradle/
-.idea/
-.log/
-build/
 target/
-*.iml
-*.log
-classes/*
-*.ipr
-*.ids
-*.iws
-publish
+logs/
+out/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
 .classpath
+.factorypath
 .project
 .settings
-application.pid
-bin/
-out/
-pom.xml
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
 log/
-keytmp/
-src/main/resources/application-local.properties
-src/main/resources/static/
-run/
-dist-deploy/
-run_backup/
-.apt_generated/
-.factorypath
-~$*
-uploadTestTemp/
 
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 
-devlog/
+### Mac
 .DS_Store
-.ideaDataSources
+*/.DS_Store
+
+### VS Code ###
+*.project
+*.factorypath
+
+### Config ###
 application.properties
-dataSources/
+src/main/resources/233.txt
 
-
+# gradle
+.gradle/
 
 
