@@ -12,6 +12,25 @@ import java.nio.channels.FileChannel;
  */
 public class BufferTest {
 
+    private boolean isSuccess;
+    private Boolean isMySelf;
+
+    public boolean isSuccess() {
+        return isSuccess;
+    }
+
+    public void setSuccess(boolean success) {
+        isSuccess = success;
+    }
+
+    public Boolean getMySelf() {
+        return isMySelf;
+    }
+
+    public void setMySelf(Boolean mySelf) {
+        isMySelf = mySelf;
+    }
+
     /**
      * Buffer demo
      */
