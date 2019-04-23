@@ -35,13 +35,10 @@ nbdist/
 *.project
 *.factorypath
 
-### Config ###
-application.properties
-src/main/resources/233.txt
 
 # gradle
 .gradle/
 
-
 *.log
+application-local.properties
 
