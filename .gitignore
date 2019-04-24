@@ -41,6 +41,9 @@ nbdist/
 
 *.log
 
+# gradle
+/gradle
+
 
 # local
 src/main/resources/application.properties
