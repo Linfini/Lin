@@ -7,8 +7,6 @@ import java.util.Date;
 
 public class User implements Serializable {
 
-    public static final String LOGIN_ID_ZOUTAO = "zoutao";
-    public static final String LOGIN_ID_HEJIE = "hejie";//外包员工使用正式账号
 
     private Long id;
 
@@ -316,15 +314,4 @@ public class User implements Serializable {
         return lastName + firstName;
     }
 
-    public interface GroupType {
-        String HrWorkGroup = "HrWorkGroup";
-        String HrColumn = "work_group_id";
-        String perfWorkGroup = "perfWorkGroup";
-        String perfColumn = "perf_work_group_id";
-    }
-
-    public interface Id {
-        // 卢肇灏
-        Long LADENG = 1344L;
-    }
 }

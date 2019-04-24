@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ServletComponentScan
 @EnableAsync
 public class Application {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         SpringApplication.run(Application.class, args);
     }
 }
