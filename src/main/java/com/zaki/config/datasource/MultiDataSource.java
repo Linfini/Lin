@@ -1,5 +1,6 @@
-package com.zaki.config;
+package com.zaki.config.datasource;
 
+import com.zaki.config.datasource.DataSourceContextHolder;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**

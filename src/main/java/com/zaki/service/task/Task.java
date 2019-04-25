@@ -1,4 +1,4 @@
-package com.zaki.test;
+package com.zaki.service.task;
 
 
 import org.springframework.scheduling.annotation.Async;
@@ -78,7 +78,7 @@ public class Task {
         Thread.sleep(random.nextInt(10000));
         long end = System.currentTimeMillis();
         System.out.println("任务一 耗时:" + (end - start) + "毫秒");
-        return new AsyncResult<Long>(end - start);
+        return new AsyncResult<>(end - start);
     }
 
     @Async
@@ -88,7 +88,7 @@ public class Task {
         Thread.sleep(random.nextInt(10000));
         long end = System.currentTimeMillis();
         System.out.println("任务二 耗时:" + (end - start) + "毫秒");
-        return new AsyncResult<Long>((end - start));
+        return new AsyncResult<>((end - start));
     }
 
     @Async
@@ -98,6 +98,6 @@ public class Task {
         Thread.sleep(random.nextInt(10000));
         long end = System.currentTimeMillis();
         System.out.println("任务三 耗时:" + (end - start) + "毫秒");
-        return new AsyncResult<Long>((end - start));
+        return new AsyncResult<>((end - start));
     }
 }

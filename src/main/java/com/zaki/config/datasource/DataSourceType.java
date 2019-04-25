@@ -1,4 +1,4 @@
-package com.zaki.config;
+package com.zaki.config.datasource;
 
 /**
  * @author zaki

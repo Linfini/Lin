@@ -1,4 +1,4 @@
-package com.zaki.annotation;
+package com.zaki.model.annotation;
 
 public @interface ExcelColumn {
     String value();

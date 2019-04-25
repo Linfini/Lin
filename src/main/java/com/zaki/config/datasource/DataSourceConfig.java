@@ -1,5 +1,6 @@
-package com.zaki.config;
+package com.zaki.config.datasource;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,14 +16,14 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author zaki
  */
 @Configuration
 public class DataSourceConfig {
-    private Class<? extends DataSource> dataSourceType = org.apache.tomcat.jdbc.pool.DataSource.class;
-
+    private Class<? extends DataSource> dataSourceType = HikariDataSource.class;
     @Bean(name = "springDataSource")
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource writeDataSource() {
@@ -61,7 +62,7 @@ public class DataSourceConfig {
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml"));
 
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
-        sqlSessionFactory.getConfiguration().setMapUnderscoreToCamelCase(true);
+        Objects.requireNonNull(sqlSessionFactory).getConfiguration().setMapUnderscoreToCamelCase(true);
         sqlSessionFactory.getConfiguration().getTypeAliasRegistry().registerAliases("com.zaki.model");
         return sqlSessionFactoryBean.getObject();
     }

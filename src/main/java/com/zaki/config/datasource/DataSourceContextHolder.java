@@ -1,4 +1,4 @@
-package com.zaki.config;
+package com.zaki.config.datasource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,34 +7,34 @@ import java.util.List;
  * @author zaki
  */
 public class DataSourceContextHolder {
-    private static final ThreadLocal<String> local = new ThreadLocal<String>();
-    private static final List<String> dataSourceIds = new ArrayList<>();
+    private static final ThreadLocal<String> LOCAL = new ThreadLocal<>();
+    private static final List<String> DATA_SOURCE_IDS = new ArrayList<>();
 
     public static void usePrimary() {
-        local.set(DataSourceType.primary.getType());
+        LOCAL.set(DataSourceType.primary.getType());
     }
     public static void useSecond() {
-        local.set(DataSourceType.second.getType());
+        LOCAL.set(DataSourceType.second.getType());
     }
 
 
     public static ThreadLocal<String> getLocal() {
-        return local;
+        return LOCAL;
     }
     public static void setType(String type) {
-        local.set(type);
+        LOCAL.set(type);
     }
     public static String getJdbcType() {
-        return local.get();
+        return LOCAL.get();
     }
     public static void clearDBType() {
-        local.remove();
+        LOCAL.remove();
     }
     public static boolean containsDataSource(String dataSourceId) {
-        return dataSourceIds.contains(dataSourceId);
+        return DATA_SOURCE_IDS.contains(dataSourceId);
     }
     public static void addDataSourceIds(String dataSourceId) {
-        dataSourceIds.add(dataSourceId);
+        DATA_SOURCE_IDS.add(dataSourceId);
     }
 }
 

@@ -1,6 +1,6 @@
 package com.zaki.service.impl;
 
-import com.zaki.config.DataSourceContextHolder;
+import com.zaki.config.datasource.DataSourceContextHolder;
 import com.zaki.mapper.UserExpandMapper;
 import com.zaki.mapper.UserMapper;
 import com.zaki.model.User;

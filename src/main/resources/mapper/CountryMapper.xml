@@ -209,40 +209,4 @@
       Code2 = #{code2,jdbcType=CHAR}
     where Code = #{code,jdbcType=CHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.zaki.model.Country">
-    <result column="country_id" jdbcType="SMALLINT" property="countryId" />
-    <result column="country" jdbcType="VARCHAR" property="country" />
-    <result column="last_update" jdbcType="TIMESTAMP" property="lastUpdate" />
-  </resultMap>
-  <insert id="insert" parameterType="com.zaki.model.Country">
-    insert into country (country_id, country, last_update
-      )
-    values (#{countryId,jdbcType=SMALLINT}, #{country,jdbcType=VARCHAR}, #{lastUpdate,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.zaki.model.Country">
-    insert into country
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="countryId != null">
-        country_id,
-      </if>
-      <if test="country != null">
-        country,
-      </if>
-      <if test="lastUpdate != null">
-        last_update,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="countryId != null">
-        #{countryId,jdbcType=SMALLINT},
-      </if>
-      <if test="country != null">
-        #{country,jdbcType=VARCHAR},
-      </if>
-      <if test="lastUpdate != null">
-        #{lastUpdate,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
 </mapper>
