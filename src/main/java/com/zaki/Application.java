@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@MapperScan({"com.zaki.mapper"})
 @EnableTransactionManagement
 @ServletComponentScan
 @EnableAsync
