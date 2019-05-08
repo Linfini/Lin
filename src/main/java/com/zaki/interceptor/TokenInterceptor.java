@@ -14,7 +14,7 @@ public class TokenInterceptor {
 
     }
 
-    @Before("pointCut() && ")
+    @Before("pointCut() && @annotation(com.zaki.model.annotation.Accesslog)")
     public void verifyToken() {
         log.info("start verify token");
     }
