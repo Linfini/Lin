@@ -1,4 +1,4 @@
-package other.enumm;
+package other.gammar.enumm;
 
 public enum User {
     //用户问卷导出生成excel

@@ -1,50 +1,39 @@
+# maven/gradle ignore
 target/
-logs/
-out/
-!.mvn/wrapper/maven-wrapper.jar
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-log/
-
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
-### Mac
-.DS_Store
-*/.DS_Store
-
-### VS Code ###
-*.project
-*.factorypath
-
-
-# gradle
+!.mvn/wrapper/*
+*.war
+*.zip
+*.tar
+*.tar.gz
+gradle/
 .gradle/
+/build
 
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+/out
+
+# temp ignore
 *.log
+*.cache
+*.diff
+*.patch
+*.tmp
 
-# gradle
-/gradle
-
+# system ignore
+.DS_Store
+Thumbs.db
+*.orig
 
 # local
 src/main/resources/application-local.properties
+src/main/resources/application-company.properties
 

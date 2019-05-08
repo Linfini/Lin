@@ -1,4 +1,4 @@
-package other.enumm;
+package other.gammar.enumm;
 
 public enum Operation {
     PLUS {

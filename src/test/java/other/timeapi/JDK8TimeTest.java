@@ -1,4 +1,4 @@
-package other.timeApiTest;
+package other.timeapi;
 
 import org.junit.Test;
 

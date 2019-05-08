@@ -1,4 +1,4 @@
-package other.generictest;
+package other.generics;
 
 import org.junit.Test;
 
