@@ -13,25 +13,25 @@ import java.util.Map;
 /**
  * @author argen
  */
-public interface IBaseMapper<DOAMIN, ID> {
+public interface IBaseMapper<DOMAIN, ID> {
     String TABLE = tableName();
 
     int deleteByPrimaryKey(ID code);
 
-    int insert(DOAMIN record);
+    int insert(DOMAIN record);
 
-    int insertSelective(DOAMIN record);
+    int insertSelective(DOMAIN record);
 
-    DOAMIN selectByPrimaryKey(ID code);
+    DOMAIN selectByPrimaryKey(ID code);
 
-    int updateByPrimaryKeySelective(DOAMIN record);
+    int updateByPrimaryKeySelective(DOMAIN record);
 
-    int updateByPrimaryKey(DOAMIN record);
+    int updateByPrimaryKey(DOMAIN record);
 
     @SelectProvider(type = UserSqlBuilder.class, method = "buildGetUserByName")
-    List<DOAMIN> selectAll();
+    List<DOMAIN> selectAll();
 
-    List<DOAMIN> findRecordList(Class<DOAMIN> clazz, Map<String, Object> param);
+    List<DOMAIN> findRecordList(Class<DOMAIN> clazz, Map<String, Object> param);
 
     static String tableName() {
         return Table.Country.getTable();
@@ -42,7 +42,6 @@ public interface IBaseMapper<DOAMIN, ID> {
             return new SQL() {{
                 SELECT("*");
                 FROM(TABLE);
-                ORDER_BY("name");
             }}.toString();
         }
     }

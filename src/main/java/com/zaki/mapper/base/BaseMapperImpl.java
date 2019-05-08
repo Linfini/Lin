@@ -12,7 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class BaseMapperImpl<DOAMIN, ID> implements IBaseMapper<DOAMIN, ID> {
+/**
+ * @author zaki
+ */
+public class BaseMapperImpl<DOMAIN, ID> implements IBaseMapper<DOMAIN, ID> {
 
     @Autowired
     private SqlSessionTemplate sqlSessionTemplate;
@@ -23,37 +26,37 @@ public class BaseMapperImpl<DOAMIN, ID> implements IBaseMapper<DOAMIN, ID> {
     }
 
     @Override
-    public int insert(DOAMIN record) {
+    public int insert(DOMAIN record) {
         return 0;
     }
 
     @Override
-    public int insertSelective(DOAMIN record) {
+    public int insertSelective(DOMAIN record) {
         return 0;
     }
 
     @Override
-    public DOAMIN selectByPrimaryKey(ID code) {
+    public DOMAIN selectByPrimaryKey(ID code) {
         return null;
     }
 
     @Override
-    public int updateByPrimaryKeySelective(DOAMIN record) {
+    public int updateByPrimaryKeySelective(DOMAIN record) {
         return 0;
     }
 
     @Override
-    public int updateByPrimaryKey(DOAMIN record) {
+    public int updateByPrimaryKey(DOMAIN record) {
         return 0;
     }
 
     @Override
-    public List<DOAMIN> selectAll() {
+    public List<DOMAIN> selectAll() {
         return null;
     }
 
     @Override
-    public List<DOAMIN> findRecordList(Class<DOAMIN> clazz, Map<String, Object> param) {
+    public List<DOMAIN> findRecordList(Class<DOMAIN> clazz, Map<String, Object> param) {
         param = DataUtils.conditionLowToUpper(param);
         String tableName = DataUtils.classNameLowToUpper(clazz);
         String whereField = " where 1 = 1";
@@ -71,9 +74,9 @@ public class BaseMapperImpl<DOAMIN, ID> implements IBaseMapper<DOAMIN, ID> {
 
         String sql = "SELECT * FROM `" + tableName + "` " + whereField;
         List<Map<String, String>> modelList = sqlSessionTemplate.selectList("findentitylist", sql);
-        List<DOAMIN> beanList = new ArrayList<>();
+        List<DOMAIN> beanList = new ArrayList<>();
         for (Map map : modelList) {
-            DOAMIN bean = null;
+            DOMAIN bean = null;
             try {
                 bean = clazz.newInstance();
                 BeanUtils.populate(bean, map);
