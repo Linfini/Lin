@@ -24,6 +24,7 @@ import java.util.Objects;
 @Configuration
 public class DataSourceConfig {
     private Class<? extends DataSource> dataSourceType = HikariDataSource.class;
+
     @Bean(name = "springDataSource")
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource writeDataSource() {
@@ -36,15 +37,22 @@ public class DataSourceConfig {
         return DataSourceBuilder.create().type(dataSourceType).build();
     }
 
+    @Bean(name = "h2DataSource")
+    @ConfigurationProperties(prefix = "h2.datasource")
+    public DataSource h2DataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
     @Primary
-    @Bean(name="dynamicDataSource")
-    @DependsOn({"springDataSource","secondDataSource"})
+    @Bean(name = "dynamicDataSource")
+    @DependsOn({"springDataSource", "secondDataSource"})
     public AbstractRoutingDataSource dynamicDataSource(@Qualifier("springDataSource") DataSource springDataSource,
                                                        @Qualifier("secondDataSource") DataSource secondDataSource) {
         MultiDataSource dataSourceRouter = new MultiDataSource();
         Map<Object, Object> targetDataSources = new HashMap<>();
         targetDataSources.put("springDataSource", springDataSource);
         targetDataSources.put("secondDataSource", secondDataSource);
+        targetDataSources.put("h2DataSource", h2DataSource());
         dataSourceRouter.setDefaultTargetDataSource(springDataSource);
         dataSourceRouter.setTargetDataSources(targetDataSources);
 

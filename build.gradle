@@ -43,12 +43,15 @@ dependencies {
     compile group: 'org.apache.poi', name: 'poi-excelant', version: '3.17'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
     compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.3.2'
-    compile group: 'org.activiti', name: 'activiti-engine', version: '6.0.0'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.23.4'
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
     compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.3.7'
     compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+    //guava
     compile group: 'com.google.guava', name: 'guava', version: '27.1-jre'
+    //activiti6.0与springBoot2.0不太兼容,推荐是使用acitici7.0以上的版本
+    compile group: 'org.activiti', name: 'activiti-spring-boot-starter-basic', version: '6.0.0'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.197'
 
 }
 
