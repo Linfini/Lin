@@ -1,8 +1,6 @@
 package other.gammar.clones;
 
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class Test {
 
     /**
@@ -18,11 +16,5 @@ public class Test {
         fatherA.child.age = 5;
         FatherClass fatherB = (FatherClass) fatherA.clone();
 
-        log.info("fatherA hash:{}", fatherA.hashCode());
-        log.info("fatherB hash:{}", fatherB.hashCode());
-        log.info("fatherA child hash:{}", fatherA.child.hashCode());
-        log.info("fatherB child hash:{}", fatherB.child.hashCode());
-        log.info("" + (fatherA == fatherB));
-        log.info("" + (fatherA.child == fatherB.child));
     }
 }

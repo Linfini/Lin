@@ -1,9 +1,7 @@
 package temp;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.SQL;
 
-@Slf4j
 public final class BaseSqlProvider {
 
     private BaseSqlProvider() {
@@ -30,7 +28,6 @@ public final class BaseSqlProvider {
 //        log.info("current table is :{}", getInstance().table);
 //    }
     static {
-        log.info("current table is :{}", getInstance().table);
     }
 
     public String selectAll() {

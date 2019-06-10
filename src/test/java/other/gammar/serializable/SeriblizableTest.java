@@ -7,13 +7,11 @@ import java.io.*;
 
 public class SeriblizableTest implements Serializable {
 
-    final Person person = new Person("张三", 12);
     String path = "d:/person.dat";
 
     @Test
     public void test1() throws IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(path));
-        out.writeObject(person);
         out.close();
     }
 
