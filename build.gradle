@@ -52,13 +52,22 @@ dependencies {
     //activiti6.0与springBoot2.0不太兼容,推荐是使用acitici7.0以上的版本
     compile group: 'org.activiti', name: 'activiti-spring-boot-starter-basic', version: '6.0.0'
     compile group: 'com.h2database', name: 'h2', version: '1.4.197'
-
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.1.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '2.1.2.RELEASE'
 }
 
 configurations {
     mybatisGenerator
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
 }
 mybatisGenerator {
     verbose = true
     configFile = 'src/main/resources/tools/generatorConfig.xml'
+}
+
+bootRun {
+    sourceResources sourceSets.main
 }
