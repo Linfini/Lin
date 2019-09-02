@@ -34,7 +34,5 @@ Thumbs.db
 *.orig
 
 # local
-src/main/resources/application-local.properties
-src/main/resources/application-company.properties
 src/main/resources/tools/generatorConfig.xml
 

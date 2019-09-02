@@ -32,7 +32,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-aop')
-    compile(group: 'org.springframework.boot', name: 'spring-boot-devtools')
 
     compile group: 'javax.mail', name: 'mail', version: '1.4.7'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
