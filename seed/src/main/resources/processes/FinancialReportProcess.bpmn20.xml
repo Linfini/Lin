@@ -1,0 +1,48 @@
+<definitions id="definitions"
+             targetNamespace="http://activiti.org/bpmn20"
+             xmlns:activiti="http://activiti.org/bpmn"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+
+    <!--
+    1.（空）开始事件 是我们流程的入口。
+    2.用户任务是流程中与操作者相关的任务声明。 注意第一个任务分配给accountancy组， 第二个任务分配给management组。
+    3.当流程达到空结束事件就会结束。
+    4.这些元素都使用连线连接。 这些连线拥有source 和 target属性， 定义了连线的方向。
+    -->
+    <process id="financialReport" name="Monthly financial report reminder process">
+
+        <startEvent id="theStart" />
+
+        <sequenceFlow id='flow1' sourceRef='theStart' targetRef='writeReportTask' />
+
+        <userTask id="writeReportTask" name="Write monthly financial report" >
+            <documentation>
+                Write monthly financial report for publication to shareholders.
+            </documentation>
+            <potentialOwner>
+                <resourceAssignmentExpression>
+                    <formalExpression>accountancy</formalExpression>
+                </resourceAssignmentExpression>
+            </potentialOwner>
+        </userTask>
+
+        <sequenceFlow id='flow2' sourceRef='writeReportTask' targetRef='verifyReportTask' />
+
+        <userTask id="verifyReportTask" name="Verify monthly financial report" >
+            <documentation>
+                Verify monthly financial report composed by the accountancy department.
+                This financial report is going to be sent to all the company shareholders.
+            </documentation>
+            <potentialOwner>
+                <resourceAssignmentExpression>
+                    <formalExpression>management</formalExpression>
+                </resourceAssignmentExpression>
+            </potentialOwner>
+        </userTask>
+
+        <sequenceFlow id='flow3' sourceRef='verifyReportTask' targetRef='theEnd' />
+
+        <endEvent id="theEnd" />
+
+    </process>
+</definitions>
