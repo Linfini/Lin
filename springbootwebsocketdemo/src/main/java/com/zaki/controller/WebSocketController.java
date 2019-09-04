@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.TextMessage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/apis/auth")
 public class WebSocketController {
@@ -19,9 +22,9 @@ public class WebSocketController {
     private WebSocketService webSocketService;
 
     @PostMapping("/message")
-    public ResponseEntity<?> sendMessage(@RequestBody JsonObject body) {
-        String uid = body.getAsJsonPrimitive("uid").getAsString();
-        String message = body.getAsJsonPrimitive("message").getAsString();
+    public ResponseEntity<?> sendMessage(@RequestBody Map<String, Object> body) {
+        String uid = (String) body.get("uid");
+        String message = (String) body.get("message");
         webSocketService.sendMessage(new TextMessage(message));
         return ResponseEntity.ok().build();
     }

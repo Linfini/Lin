@@ -1,5 +1,6 @@
-package com.zaki;
+package com.zaki.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
@@ -8,6 +9,7 @@ import org.springframework.web.socket.server.HandshakeInterceptor;
 
 import java.util.Map;
 
+@Configuration
 public class HandShake implements HandshakeInterceptor {
 
     @Override
