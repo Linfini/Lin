@@ -16,14 +16,9 @@ public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocke
     @Autowired
     private MyWebSocketHandler handler;
 
-    @Autowired
-    private HandShake handShake;
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(handler, "/message")
-                .addInterceptors(handShake).setAllowedOrigins("*")
-                .addHandler(handler, "/message/2")
-                .addInterceptors(handShake).setAllowedOrigins("*");
+        registry.addHandler(handler, "myHandler/{ID}").setAllowedOrigins("*");
     }
 }
