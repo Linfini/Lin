@@ -1,6 +1,5 @@
 package com.zaki.config;
 
-import com.zaki.HandShake;
 import com.zaki.handler.MyWebSocketHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +19,6 @@ public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocke
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(handler, "/topic")
-                .addInterceptors(new HandShake()).setAllowedOrigins("*")
-                .addHandler(handler, "/topic/2")
-                .addInterceptors(new HandShake()).setAllowedOrigins("*");
+        registry.addHandler(handler, "myHandler/{ID}").setAllowedOrigins("*");
     }
 }
