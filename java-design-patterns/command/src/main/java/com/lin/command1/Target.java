@@ -3,6 +3,9 @@ package com.lin.command1;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Receiver
+ * */
 public abstract class Target {
     private static final Logger LOGGER = LoggerFactory.getLogger(Target.class);
 
