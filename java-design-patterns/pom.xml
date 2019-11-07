@@ -69,6 +69,8 @@
     </properties>
     <modules>
         <module>command</module>
+        <module>observer</module>
+        <module>state</module>
     </modules>
 
     <repositories>
