@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+
+    <parent>
+        <artifactId>Lin</artifactId>
+        <groupId>com.lin</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <groupId>com.zaki</groupId>
     <artifactId>spring-boot-websocket-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
