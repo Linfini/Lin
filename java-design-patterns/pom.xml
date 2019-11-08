@@ -71,6 +71,7 @@
         <module>command</module>
         <module>observer</module>
         <module>state</module>
+        <module>factory</module>
     </modules>
 
     <repositories>
