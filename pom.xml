@@ -35,6 +35,7 @@
         <module>java-design-patterns</module>
         <module>classloader</module>
         <module>gs-messaging-stomp-websocket/complete</module>
-        <module>springbootwebsocketdemo</module>
+        <module>spring-boot-websocket-demo</module>
+        <module>gs-messaging-stomp-websocket/initial</module>
     </modules>
 </project>
