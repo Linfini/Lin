@@ -2,6 +2,9 @@ package com.lin.events;
 
 import java.util.EventObject;
 
+/**
+ * 相比观察者模式多的事件
+ * */
 public class LoginEvent {
     private String userName;
     private String password;
