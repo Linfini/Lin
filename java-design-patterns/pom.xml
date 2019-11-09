@@ -72,6 +72,7 @@
         <module>observer</module>
         <module>state</module>
         <module>factory</module>
+        <module>abstract-factory</module>
     </modules>
 
     <repositories>
