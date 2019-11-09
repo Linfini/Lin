@@ -73,6 +73,7 @@
         <module>state</module>
         <module>factory</module>
         <module>abstract-factory</module>
+        <module>singleton</module>
     </modules>
 
     <repositories>
