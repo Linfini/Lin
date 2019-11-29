@@ -74,6 +74,7 @@
         <module>factory</module>
         <module>abstract-factory</module>
         <module>singleton</module>
+        <module>decorator</module>
     </modules>
 
     <repositories>
