@@ -9,3 +9,5 @@
 
 rootProject.name = 'Lin'
 include("seed")
+include 'message-system'
+

@@ -4,3 +4,22 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
  */
+subprojects {
+    apply plugin:'java'
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter-web:2.1.2.RELEASE")
+        testCompile("org.springframework.boot:spring-boot-starter-test:2.1.2.RELEASE")
+        compile("org.springframework.boot:spring-boot-starter-aop:2.1.2.RELEASE")
+        compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+        compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
+    }
+}
