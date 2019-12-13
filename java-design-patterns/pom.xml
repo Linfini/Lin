@@ -75,6 +75,8 @@
         <module>abstract-factory</module>
         <module>singleton</module>
         <module>decorator</module>
+        <module>strategy</module>
+        <module>template-method</module>
     </modules>
 
     <repositories>
