@@ -1,6 +1,7 @@
 package com.messsage.model;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
+import com.messsage.model.enums.MessageType;
 import lombok.Data;
 
 import java.util.Date;

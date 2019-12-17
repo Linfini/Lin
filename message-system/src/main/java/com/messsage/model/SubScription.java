@@ -1,6 +1,8 @@
 package com.messsage.model;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
+import com.messsage.model.enums.MessageChannel;
+import com.messsage.model.enums.SubscriberType;
 import lombok.Data;
 
 @Data

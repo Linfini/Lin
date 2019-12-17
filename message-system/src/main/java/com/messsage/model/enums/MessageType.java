@@ -1,4 +1,4 @@
-package com.messsage.model;
+package com.messsage.model.enums;
 
 /**
  * 消息类型

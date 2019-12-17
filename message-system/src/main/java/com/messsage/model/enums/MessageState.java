@@ -1,4 +1,4 @@
-package com.messsage.model;
+package com.messsage.model.enums;
 
 public enum MessageState {
     //未读

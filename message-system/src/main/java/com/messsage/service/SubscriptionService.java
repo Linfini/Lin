@@ -1,24 +1,10 @@
 package com.messsage.service;
 
-import com.messsage.model.MessageState;
+import com.messsage.model.SubScription;
 
-/**
- * 创建消息 推送消息 拉取消息
- */
-public interface NotifyService {
-    /**
-     * 创建消息
-     */
-    void createMessage(String content, Long sender);
+import java.util.List;
 
-    /**
-     * 用户读取消息
-     *
-     * @param userId    userId
-     * @param messageId 消息
-     * @param state     state
-     */
-    void readMessage(Long userId, Long messageId, MessageState state);
+public interface SubscriptionService {
 
     /**
      * 订阅
@@ -38,6 +24,5 @@ public interface NotifyService {
      */
     void cancelSubscription(Long userId, String target, String targetType);
 
-
-
+    List<SubScription> getSubscription(Long userId);
 }

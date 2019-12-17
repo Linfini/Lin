@@ -1,4 +1,4 @@
-package com.messsage.model;
+package com.messsage.model.enums;
 
 public enum SubscriberType {
     //个人用户
