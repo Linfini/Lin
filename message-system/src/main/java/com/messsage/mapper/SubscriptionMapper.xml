@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.SubscriptionMapper">
+  <resultMap id="BaseResultMap" type="model.Subscription">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="target" jdbcType="BIGINT" property="target" />
+    <result column="target_type" jdbcType="VARCHAR" property="targetType" />
+    <result column="action" jdbcType="VARCHAR" property="action" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="subscriber" jdbcType="BIGINT" property="subscriber" />
+    <result column="subscriber_type" jdbcType="VARCHAR" property="subscriberType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, target, target_type, action, channel, subscriber, subscriber_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from m_subscription
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from m_subscription
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="model.Subscription">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into m_subscription (target, target_type, action, 
+      channel, subscriber, subscriber_type
+      )
+    values (#{target,jdbcType=BIGINT}, #{targetType,jdbcType=VARCHAR}, #{action,jdbcType=VARCHAR}, 
+      #{channel,jdbcType=VARCHAR}, #{subscriber,jdbcType=BIGINT}, #{subscriberType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="model.Subscription">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into m_subscription
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="target != null">
+        target,
+      </if>
+      <if test="targetType != null">
+        target_type,
+      </if>
+      <if test="action != null">
+        action,
+      </if>
+      <if test="channel != null">
+        channel,
+      </if>
+      <if test="subscriber != null">
+        subscriber,
+      </if>
+      <if test="subscriberType != null">
+        subscriber_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="target != null">
+        #{target,jdbcType=BIGINT},
+      </if>
+      <if test="targetType != null">
+        #{targetType,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="subscriber != null">
+        #{subscriber,jdbcType=BIGINT},
+      </if>
+      <if test="subscriberType != null">
+        #{subscriberType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.Subscription">
+    update m_subscription
+    <set>
+      <if test="target != null">
+        target = #{target,jdbcType=BIGINT},
+      </if>
+      <if test="targetType != null">
+        target_type = #{targetType,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null">
+        action = #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="subscriber != null">
+        subscriber = #{subscriber,jdbcType=BIGINT},
+      </if>
+      <if test="subscriberType != null">
+        subscriber_type = #{subscriberType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.Subscription">
+    update m_subscription
+    set target = #{target,jdbcType=BIGINT},
+      target_type = #{targetType,jdbcType=VARCHAR},
+      action = #{action,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      subscriber = #{subscriber,jdbcType=BIGINT},
+      subscriber_type = #{subscriberType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

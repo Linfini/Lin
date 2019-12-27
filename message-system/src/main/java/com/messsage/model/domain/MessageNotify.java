@@ -1,4 +1,4 @@
-package com.messsage.model;
+package com.messsage.model.domain;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.messsage.model.enums.MessageChannel;

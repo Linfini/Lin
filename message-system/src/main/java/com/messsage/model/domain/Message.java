@@ -1,4 +1,4 @@
-package com.messsage.model;
+package com.messsage.model.domain;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.messsage.model.enums.MessageType;
@@ -17,4 +17,14 @@ public class Message {
     private String action;
     private Long sender;
     private Date createTime;
+
+    public Message(String content, Long sender) {
+        this.content = content;
+        this.sender = sender;
+    }
+
+    public Message createMessage() {
+        this.createTime = new Date();
+        return this;
+    }
 }

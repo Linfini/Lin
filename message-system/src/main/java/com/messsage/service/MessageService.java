@@ -1,14 +1,14 @@
 package com.messsage.service;
 
-import com.messsage.model.Message;
-import com.messsage.model.SubScription;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.messsage.model.domain.Message;
 
 import java.util.List;
 
 /**
  * 创建消息 推送消息 拉取消息
  */
-public interface MessageService {
+public interface MessageService extends IService<Message> {
 
     /**
      * 新建一条公告信息
@@ -19,13 +19,13 @@ public interface MessageService {
     void createAnnounce(String content, Long sender);
 
     /**
-     * 创建消息
+     * 创建私信
      *
      * @param content  content
      * @param receiver receiver
      * @param sender   sender
      */
-    void createMessage(String content, Long sender, Long receiver);
+    void createDirectMessage(String content, Long sender, Long receiver);
 
     /**
      * 创建消息

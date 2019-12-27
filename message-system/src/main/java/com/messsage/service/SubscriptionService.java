@@ -1,10 +1,11 @@
 package com.messsage.service;
 
-import com.messsage.model.SubScription;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.messsage.model.domain.Subscription;
 
 import java.util.List;
 
-public interface SubscriptionService {
+public interface SubscriptionService extends IService<Subscription> {
 
     /**
      * 订阅
@@ -24,5 +25,5 @@ public interface SubscriptionService {
      */
     void cancelSubscription(Long userId, String target, String targetType);
 
-    List<SubScription> getSubscription(Long userId);
+    List<Subscription> getSubscription(Long userId);
 }
