@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seasun.message.mapper.MessageNotifyMapper">
+    <resultMap id="BaseResultMap" type="com.seasun.message.model.MessageNotify">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user" jdbcType="BIGINT" property="user"/>
+        <result column="state" jdbcType="VARCHAR" property="state"/>
+        <result column="message_id" jdbcType="BIGINT" property="messageId"/>
+        <result column="channel" jdbcType="VARCHAR" property="channel"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+    <resultMap id="MessageNotifyResultMap"  type="com.seasun.message.model.MessageNotify" extends="BaseResultMap">
+        <result column="m_type" jdbcType="VARCHAR" property="type" />
+        <result column="m_target" jdbcType="BIGINT" property="target" />
+        <result column="m_target_type" jdbcType="VARCHAR" property="targetType" />
+        <result column="m_action" jdbcType="VARCHAR" property="action" />
+        <result column="m_sender" jdbcType="BIGINT" property="sender" />
+        <result column="m_content" jdbcType="LONGVARCHAR" property="content" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, user, state, message_id, channel, create_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from m_message_notify
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from m_message_notify
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.seasun.message.model.MessageNotify">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into m_message_notify (user, state, message_id,
+        channel, create_time)
+        values (#{user,jdbcType=BIGINT}, #{state,jdbcType=VARCHAR}, #{messageId,jdbcType=BIGINT},
+        #{channel,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.seasun.message.model.MessageNotify">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into m_message_notify
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="user != null">
+                user,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="messageId != null">
+                message_id,
+            </if>
+            <if test="channel != null">
+                channel,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="user != null">
+                #{user,jdbcType=BIGINT},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="messageId != null">
+                #{messageId,jdbcType=BIGINT},
+            </if>
+            <if test="channel != null">
+                #{channel,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.seasun.message.model.MessageNotify">
+        update m_message_notify
+        <set>
+            <if test="user != null">
+                user = #{user,jdbcType=BIGINT},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="messageId != null">
+                message_id = #{messageId,jdbcType=BIGINT},
+            </if>
+            <if test="channel != null">
+                channel = #{channel,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.seasun.message.model.MessageNotify">
+        update m_message_notify
+        set user = #{user,jdbcType=BIGINT},
+        state = #{state,jdbcType=VARCHAR},
+        message_id = #{messageId,jdbcType=BIGINT},
+        channel = #{channel,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectByReceiverAndSubjectAndDate" resultMap="MessageNotifyResultMap">
+        select mn.*,
+        m.id m_id,m.content m_content,m.type m_type,m.target_type m_target_type,m.action m_action,
+        m.target m_target,m.sender m_sender,m.create_time m_create_time
+        from m_message_notify mn
+        left join m_message m on mn.message_id=m.id
+        where 1=1
+        <if test="receivers !=null and receivers.size()>0">
+            and mn.`user` in
+            <foreach collection="receivers" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="subject !=null">
+            <if test="subject.targetType!=null">
+                and m.target_type = #{subject.targetType}
+            </if>
+            <if test="subject.action!=null">
+                and m.action= #{subject.action}
+            </if>
+            <if test="subject.target!=null">
+                and m.target=#{subject.target}
+            </if>
+        </if>
+        <if test="begin !=null">
+            and mn.create_time <![CDATA[>= ]]> #{begin}
+        </if>
+        <if test="end !=null">
+            and mn.create_time <![CDATA[<= ]]> #{end}
+        </if>
+    </select>
+</mapper>
